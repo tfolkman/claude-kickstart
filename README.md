@@ -249,7 +249,11 @@ Found a bug or want a new feature? Open an issue on GitHub!
 
 ## 📄 License
 
-MIT - Use this tool to build amazing things!
+Copyright (c) 2024 Tyler Folkman
+
+This source code is made available for viewing and educational purposes only.
+Commercial use, modification, or redistribution requires a paid license.
+Visit tylerfolkman.substack.com for licensing details.
 
 ---
 
