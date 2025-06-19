@@ -10,7 +10,7 @@ Claude Kickstart is a CLI tool that generates highly detailed setup instructions
 
 ```bash
 # Clone the repository
-git clone https://github.com/tylerfolkman/claude-kickstart.git
+git clone https://github.com/tfolkman/claude-kickstart.git
 
 # Navigate to the project
 cd claude-kickstart
