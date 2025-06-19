@@ -2,13 +2,24 @@ import { jest } from '@jest/globals';
 
 describe('CLI Integration', () => {
   describe('CLI Structure', () => {
-    it('should be able to import CLI modules without errors', async () => {
-      // Test that our CLI modules can be imported
-      const { getQuestions } = await import('../src/questions.js');
-      const { generateMarkdown } = await import('../src/generator.js');
+    it('should be able to import plugin-based CLI modules without errors', async () => {
+      // Test that our plugin-based CLI modules can be imported
+      const { questionGenerator } = await import('../src/questions.js');
+      const { generator } = await import('../src/generator.js');
+      const { runWizard } = await import('../src/index.js');
       
-      expect(typeof getQuestions).toBe('function');
-      expect(typeof generateMarkdown).toBe('function');
+      expect(typeof questionGenerator).toBe('object');
+      expect(typeof generator).toBe('object');
+      expect(typeof runWizard).toBe('function');
+    });
+
+    it('should be able to import plugin system without errors', async () => {
+      // Test that our plugin system can be imported
+      const { registry, BasePlugin } = await import('../src/plugins/index.js');
+      
+      expect(registry).toBeDefined();
+      expect(BasePlugin).toBeDefined();
+      expect(typeof BasePlugin).toBe('function');
     });
 
     it('should have proper package.json configuration', async () => {

@@ -1,10 +1,19 @@
-# 🚀 Claude Kickstart
+# 🚀 Claude Kickstart v2.0
 
 **Save 30-45 minutes on every new project!** Generate perfect `claude-kickstart.md` files that make Claude Code's `/init` command work flawlessly.
 
 ## 🎯 What is this?
 
-Claude Kickstart is a CLI tool that generates highly detailed setup instructions for Claude Code. Instead of spending 30+ minutes explaining your project structure, dependencies, and preferences to Claude, this tool asks you 15 smart questions and generates a complete project blueprint in < 3 minutes.
+Claude Kickstart is a CLI tool with an **extensible plugin system** that generates highly detailed setup instructions for Claude Code. Instead of spending 30+ minutes explaining your project structure, dependencies, and preferences to Claude, this tool asks smart questions and generates a complete project blueprint in < 3 minutes.
+
+## ✨ New in v2.0: Plugin System
+
+- **🔌 Extensible Architecture**: Add new stacks without modifying core code
+- **🧩 Plugin Registry**: Discover and manage technology plugins
+- **📏 Type-Safe Configuration**: Schema validation with detailed error messages
+- **🧪 Built-in Testing**: Plugin compliance and integration testing
+- **⚡ Performance Optimized**: Template caching and lazy loading
+- **🔍 Smart Discovery**: Dynamic questions based on plugin capabilities
 
 ## 📦 Installation
 
@@ -38,6 +47,19 @@ cd my-awesome-project
 claude-kickstart
 
 # Answer the questions, get your perfect setup file!
+```
+
+### New Plugin System Features
+```bash
+# Browse available plugins
+claude-kickstart plugins
+
+# Explore plugin browser in interactive mode
+claude-kickstart
+# → Choose "🔍 Browse available plugins"
+
+# Validate configuration files
+claude-kickstart validate my-config.json
 ```
 
 ### Using Saved Profiles (After First Use)
@@ -152,44 +174,79 @@ Share profiles with your team:
 2. Share the JSON files with teammates
 3. They can place them in the same directory
 
-## 🛠️ Supported Tech Stacks
+## 🔌 Plugin System
 
-### Full-Stack
-- Next.js 14 (App/Pages Router)
-- Remix
-- T3 Stack
-- MERN/MEAN Stack
+### Available Plugins (v2.0)
 
-### Backend
-- Node.js (Express/Fastify)
-- Python (FastAPI/Django)
-- Go (Gin)
-- Ruby on Rails
+Run `claude-kickstart plugins` to see all 17 available plugins:
 
-### Frontend
-- React
-- Vue.js
-- Svelte
-- Angular
-- Vanilla JS
+#### Frontend Stacks
+- **Next.js 14 (App Router)** - Modern React with App Router
+- **Next.js 14 (Pages Router)** - Traditional Next.js routing  
+- **React** - Popular JavaScript library for UIs
+- **Vue.js** - Progressive JavaScript framework
+- **Svelte** - Cybernetically enhanced web apps
+- **Angular** - Platform for building applications
+- **Vanilla JS** - Pure JavaScript projects
 
-### Databases
-- PostgreSQL
-- MySQL
-- MongoDB
-- SQLite
-- Supabase
-- Firebase
+#### Backend Stacks
+- **Express.js** - Fast Node.js web framework
+- **Fastify** - Fast Node.js alternative to Express
+- **Python FastAPI** - Modern Python web framework with OAuth & Docker support
+- **Django** - High-level Python web framework
+- **Go + Gin** - Fast Go web framework
+- **Ruby on Rails** - Elegant web development framework
 
-### And Much More!
-- Authentication (NextAuth, Clerk, Auth0, etc.)
-- Styling (Tailwind, CSS Modules, Styled Components, etc.)
-- Testing (Jest, Vitest, Playwright, Cypress, etc.)
-- Component Libraries (shadcn/ui, MUI, Mantine, etc.)
+#### Full-Stack Solutions
+- **T3 Stack** - TypeScript + tRPC + Prisma + Next.js
+- **MERN Stack** - MongoDB + Express + React + Node.js
+- **MEAN Stack** - MongoDB + Express + Angular + Node.js
+- **Remix** - Full-stack web framework focused on web standards
+
+### Creating Custom Plugins
+
+Easily extend Claude Kickstart with your own stacks:
+
+```javascript
+// src/plugins/my-stack-plugin.js
+export class MyStackPlugin extends BasePlugin {
+  static get metadata() {
+    return {
+      name: 'my-stack',
+      displayName: 'My Awesome Stack',
+      category: 'stack',
+      projectTypes: ['fullstack'],
+      languages: ['TypeScript'],
+      icon: '🚀'
+    };
+  }
+  
+  getDependencies() {
+    return {
+      production: ['my-framework'],
+      development: this.getDevDependencies()
+    };
+  }
+
+  getDevDependencies() {
+    return ['my-dev-tools', 'typescript'];
+  }
+
+  getFileStructure() {
+    return `src/
+├── components/
+├── pages/
+└── app.ts`;
+  }
+}
+```
+
+See `PLUGIN_SYSTEM.md` for complete documentation and testing guide.
 
 ## 🔧 Troubleshooting
 
 ### "Command not found" after installation
+
 ```bash
 # Make sure you ran npm link
 cd claude-kickstart
@@ -197,6 +254,18 @@ npm link
 
 # Verify it's in your PATH
 which claude-kickstart
+```
+
+### Plugin System Issues
+```bash
+# List available plugins
+claude-kickstart plugins
+
+# Validate configuration
+claude-kickstart validate my-config.json
+
+# Debug plugin loading
+PLUGIN_DEBUG=true claude-kickstart
 ```
 
 ### Want to uninstall?
@@ -211,6 +280,9 @@ rm -rf path/to/claude-kickstart
 ### Profiles not saving?
 - Check permissions for `~/.claude-kickstart/`
 - Make sure you have write access to your home directory
+
+### Migration Issues?
+See `MIGRATION.md` for detailed v1.0 → v2.0 migration guide.
 
 ## 🎓 Example Scenarios
 
@@ -238,14 +310,27 @@ ck -q  # Use whatever you used last time
 ## 📊 Time Savings Calculator
 
 - Manual setup explanation to Claude: ~30-45 minutes
-- With Claude Kickstart: ~3 minutes
+- With Claude Kickstart v2.0: ~3 minutes
 - **You save: 27-42 minutes per project!**
 
 If you create 2 projects per week, that's **2-3 hours saved weekly**!
 
 ## 🤝 Contributing
 
+### Plugin Development
+Create and share plugins for new technology stacks:
+1. Follow the plugin guide in `PLUGIN_SYSTEM.md`
+2. Test with the built-in plugin testing framework
+3. Submit a PR with your plugin
+
+### Core Development
 Found a bug or want a new feature? Open an issue on GitHub!
+
+## 📚 Documentation
+
+- **`PLUGIN_SYSTEM.md`** - Complete plugin development guide
+- **`MIGRATION.md`** - v1.0 → v2.0 migration guide
+- **`SCALABILITY_GUIDE.md`** - Architecture and design decisions
 
 ## 📄 License
 

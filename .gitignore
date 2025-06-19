@@ -7,3 +7,5 @@ dist/
 build/
 claude-kickstart.md
 coverage/
+.claude
+validation-output/

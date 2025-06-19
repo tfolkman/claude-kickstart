@@ -3,7 +3,7 @@ import { join } from 'path';
 import fsExtra from 'fs-extra';
 import inquirer from 'inquirer';
 import chalk from 'chalk';
-import { generateMarkdown } from './generator.js';
+import { generator } from './generator.js';
 import { writeFile } from 'fs/promises';
 
 const { ensureDir, readJson, writeJson, pathExists, readdir } = fsExtra;
@@ -76,7 +76,7 @@ export async function loadProfile(profileName) {
     console.log();
     
     // Generate and write the markdown
-    const markdown = await generateMarkdown(config);
+    const markdown = await generator.generateMarkdown(config);
     await writeFile('claude-kickstart.md', markdown);
     
     console.log(chalk.green('✅ Success! Created claude-kickstart.md'));
@@ -106,7 +106,7 @@ export async function quickSetup() {
     console.log();
     
     // Generate and write the markdown
-    const markdown = await generateMarkdown(config);
+    const markdown = await generator.generateMarkdown(config);
     await writeFile('claude-kickstart.md', markdown);
     
     console.log(chalk.green('✅ Success! Created claude-kickstart.md'));
