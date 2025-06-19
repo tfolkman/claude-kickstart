@@ -1,7 +1,7 @@
 {
   "name": "claude-kickstart",
-  "version": "1.0.0",
-  "description": "Generate perfect Claude Code setup files in < 3 minutes",
+  "version": "2.0.0",
+  "description": "Generate perfect Claude Code setup files with extensible plugin system",
   "type": "module",
   "main": "src/index.js",
   "bin": {
@@ -13,7 +13,15 @@
     "dev": "nodemon --watch src --watch bin ./bin/cli.js",
     "test": "NODE_OPTIONS='--experimental-vm-modules' jest",
     "test:watch": "NODE_OPTIONS='--experimental-vm-modules' jest --watch",
-    "test:coverage": "NODE_OPTIONS='--experimental-vm-modules' jest --coverage"
+    "test:coverage": "NODE_OPTIONS='--experimental-vm-modules' jest --coverage",
+    "test:plugins": "NODE_OPTIONS='--experimental-vm-modules' jest tests/plugin-system.test.js tests/built-in-plugins.test.js",
+    "test:comprehensive": "npm run test:plugins && NODE_OPTIONS='--experimental-vm-modules' jest tests/plugins/",
+    "validate": "node scripts/validate.js",
+    "validate:quick": "node scripts/validate.js quick",
+    "validate:plugins": "node scripts/validate.js full",
+    "validate:complete": "node scripts/validate.js all",
+    "clean": "rm -rf validation-output",
+    "plugins": "node ./bin/cli.js plugins"
   },
   "keywords": [
     "claude",
@@ -21,7 +29,11 @@
     "cli",
     "kickstart",
     "setup",
-    "project-generator"
+    "project-generator",
+    "plugin-system",
+    "extensible",
+    "modular",
+    "scaffolding"
   ],
   "author": "Tyler Folkman",
   "license": "MIT",
