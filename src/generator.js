@@ -250,7 +250,7 @@ export class ModularGenerator {
     return guidelines[config.styling] || '';
   }
 
-  // Utility functions (copied from original generator for compatibility)
+  // Utility functions
   detectGitHubCLI() {
     try {
       execSync('which gh', { stdio: 'pipe' });
@@ -475,7 +475,7 @@ Create shared commands in \`.claude/commands/\`:
     return content.trim();
   }
 
-  // Label helper functions (migrated from original)
+  // Label helper functions
   getProjectTypeLabel(type) {
     const labels = {
       'fullstack': 'Full-Stack Web App',
