@@ -281,9 +281,6 @@ rm -rf path/to/claude-kickstart
 - Check permissions for `~/.claude-kickstart/`
 - Make sure you have write access to your home directory
 
-### Migration Issues?
-See `MIGRATION.md` for detailed v1.0 → v2.0 migration guide.
-
 ## 🎓 Example Scenarios
 
 ### Scenario 1: Starting a New SaaS
@@ -329,8 +326,6 @@ Found a bug or want a new feature? Open an issue on GitHub!
 ## 📚 Documentation
 
 - **`PLUGIN_SYSTEM.md`** - Complete plugin development guide
-- **`MIGRATION.md`** - v1.0 → v2.0 migration guide
-- **`SCALABILITY_GUIDE.md`** - Architecture and design decisions
 
 ## 📄 License
 
